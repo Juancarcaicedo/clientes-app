@@ -1,0 +1,52 @@
+/* Estilos para el contenedor de la tabla */
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #f8f9fa; /* Color de fondo de la barra de navegación */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilos para el enlace activo */
+.nav-item.active .nav-link {
+    color: #007bff; /* Color del enlace activo */
+}
+
+/* Estilos para los enlaces de la barra de navegación */
+.nav-link {
+    color: #495057; /* Color del texto */
+    padding: 0.5rem 1rem; /* Espaciado interno */
+}
+
+.nav-link:hover {
+    color: #007bff; /* Cambiar color al pasar el ratón por encima */
+}
+
+/* Estilos para el botón de alternar en dispositivos móviles */
+.navbar-toggler {
+    border-color: #007bff; /* Color del borde del botón */
+}
+
+.navbar-toggler-icon {
+    background-color: #007bff; /* Color del icono del botón */
+}
+
+/* Estilos para el título de la barra de navegación */
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* Estilos para los subíndices */
+.navbar-nav {
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 10px; /* Espacio entre los elementos de navegación */
+}
+
+/* Estilos adicionales según sea necesario */

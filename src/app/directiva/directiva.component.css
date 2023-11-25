@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+td {
+  background-color: #fff;
+}
+
+td,
+th {
+  border-radius: 8px;
+}
+
+td,
+th {
+  color: #000;
+}
