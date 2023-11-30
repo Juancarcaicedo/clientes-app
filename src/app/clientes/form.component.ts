@@ -29,13 +29,21 @@ export class FormComponent implements OnInit {
         'success'
       );
     },err => {
-      console.log("hola");
-      this.errores.push(err.error['nombre']);
-      this.errores.push(err.error['apellido']);
-      this.errores.push(err.error['email']);
+      this.agregarErrores(err.error);
       console.error('Código del error desde el backend: ' + err.status);
       console.error(err.error.errors);
       }
     );
+  }
+
+  private agregarErrores(errorObject: any): void {
+    Object.keys(errorObject).forEach((key) => {
+      const error = errorObject[key];
+      if (typeof error === 'object') {
+        this.agregarErrores(error); 
+      } else if (error) {
+        this.errores.push(error);
+      }
+    });
   }
 }
