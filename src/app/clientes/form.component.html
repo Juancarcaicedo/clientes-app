@@ -1,7 +1,14 @@
+
 <div class="card bg-dark text-white">
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
-    <form>
+    <ul class="alert alert-danger" *ngIf="errores && errores.length > 0">
+      <li *ngFor="let err of errores">
+        {{ err }}
+      </li>
+    </ul>
+    
+    <form #clienteForm="ngForm">
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
@@ -10,9 +17,23 @@
             class="form-control"
             [(ngModel)]="cliente.nombre"
             name="nombre"
+            
           />
+       <!--   <div
+            class="alert alert-danger"
+            *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+          >
+            <div *ngIf="nombre.errors && nombre.errors['required']">
+              Nombre es requerido
+            </div>
+
+            <div *ngIf="nombre.errors && nombre.errors['minlength']">
+              Nombre debe tener al menos 4 caracteres
+            </div>
+          </div>-->
         </div>
       </div>
+
       <div class="form-group row">
         <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
         <div class="col-sm-6">
@@ -21,25 +42,38 @@
             class="form-control"
             [(ngModel)]="cliente.apellido"
             name="apellido"
+            
           />
+          
         </div>
       </div>
+
       <div class="form-group row">
         <label for="email" class="col-form-label col-sm-2">Email</label>
         <div class="col-sm-6">
           <input
-            type="text"
+            type="email"
             class="form-control"
             [(ngModel)]="cliente.email"
             name="email"
+           
           />
+          
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-6">
-        <button class="btn btn-primary" role="button" (click)='crearCliente()'>Crear</button>
+          <button
+            class="btn btn-primary"
+            role="button"
+            (click)="crearCliente()"
+            [disabled]="!clienteForm.form.valid"
+          >
+            Crear
+          </button>
         </div>
-        </div>
+      </div>
+  
     </form>
   </div>
 </div>

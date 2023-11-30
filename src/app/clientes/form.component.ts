@@ -15,10 +15,12 @@ import Swal from 'sweetalert2';
 export class FormComponent implements OnInit {
   public cliente: Cliente = new Cliente();
   public titulo: string = 'crear cliente';
+  public errores: string[]= [];
   constructor(private clienteService: ClienteService, private router: Router) {}
 
   ngOnInit(): void {}
   public crearCliente(): void {
+    this.errores =[];
     this.clienteService.create(this.cliente).subscribe((respose) => {
       this.router.navigate(['/clientes']);
       Swal.fire(
@@ -26,6 +28,14 @@ export class FormComponent implements OnInit {
         `Cliente ${respose.nombre} creado con éxito!`,
         'success'
       );
-    });
+    },err => {
+      console.log("hola");
+      this.errores.push(err.error['nombre']);
+      this.errores.push(err.error['apellido']);
+      this.errores.push(err.error['email']);
+      console.error('Código del error desde el backend: ' + err.status);
+      console.error(err.error.errors);
+      }
+    );
   }
 }
