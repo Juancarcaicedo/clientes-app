@@ -15,8 +15,13 @@ export class ClientesComponent implements OnInit  {
   clientes: Cliente[] = [];
   constructor(private objClienteService: ClienteService) { }
   ngOnInit(): void {
-   this.objClienteService.getClientes().subscribe(
-     clientes=> this.clientes= clientes
+    this.objClienteService.getClientes().subscribe(
+      (clientes: Cliente[]) => {
+        this.clientes = clientes;
+      },
+      (error) => {
+        console.error('Error al obtener clientes:', error);
+      }
    );
     }
     
